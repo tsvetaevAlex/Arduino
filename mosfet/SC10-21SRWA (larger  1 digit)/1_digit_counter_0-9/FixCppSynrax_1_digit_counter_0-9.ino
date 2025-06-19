@@ -6,6 +6,7 @@
 
 int GateUpper = 9;
 int GateLower = 8;
+int const pinsQTY = 11;
 
 // Пины для сегментов
 int led1  = 1;  // lower left segment
@@ -16,8 +17,10 @@ int led5  = 5;  // lower right segment
 int led7  = 7;  // upper right segment
 int led10 = 10; // upper left segment
 int led11 = 11; // upper middle segment
-int pinsQTY = ;
+int pinMaxNumber = 11;
 int pause = 500;
+int currentDigit = 0;
+int freezePause = 1500;
 
 // массив пинов для управления сегментами (в нужном порядке)
 int segmentPins[8] = {led1, led2, led4, led5, led7, led10, led11, led3}; // led3 (точка)
@@ -49,13 +52,6 @@ void setup() {
   // Устанавливаем режим OUTPUT для всех сегментов
   for (int i = 0; i < 8; i++) {
     pinMode(segmentPins[i], OUTPUT);
-  }
-}
-
-void flushIndicator() {
-  // выключить все сегменты
-  for (int i = 0; i < 8; i++) {
-    digitalWrite(segmentPins[i], LOW);
   }
 }
 
@@ -96,10 +92,48 @@ void showDigit(int digit) {
   Serial.println("------> Show digit End\n");
 }
 
-void loop() {
-  for (int digit = 0; digit <= 9; digit++) {
-    flushIndicator();
-    showDigit(digit);
-    delay(1000);
-  }
-}
+  void loop() {
+
+    int* segments = digits[currentDigit];
+    {
+      showDigit(currentDigit);
+      delay(1000);
+      if (currentDigit >= 9)
+      {
+      currentDigit = 0; 
+      }
+      // ----------------- Begin of Upper Gate------------------
+      digitalWrite(GateUpper, HIGH);
+
+      for (int j =1; j<=pinMaxNumber; ++j)
+      {
+        if (segments[j]) {
+          digitalWrite(segmentPins[j], HIGH);
+          Serial.println("Segment ON (Upper): " + String(j));
+        } else {
+          digitalWrite(segmentPins[j], LOW);
+        }
+      }
+      digitalWrite(GateUpper, LOW);
+      // ----------------- End  of Upper Gate------------------
+      // ----------------- Begin of Lower Gate------------------
+      digitalWrite(GateLower, HIGH);
+
+      for (int j =1; j<=pinsQTY; ++j)
+      {
+        if (segments[j]) {
+          digitalWrite(segmentPins[j], HIGH);
+          Serial.println("Segment ON (Upper): " + String(j));
+        } else {
+          digitalWrite(segmentPins[j], LOW);
+        }
+      }
+      digitalWrite(GateLower, LOW);
+      // ----------------- End  of Lower Gate------------------
+      delay(freezePause); // to leep shown digit for a few momrnts
+
+      // end of main Loop itteration, show 1 ddigit;
+      ++currentDigit; //sry to next difit for next itteration.
+    } // end of int* segments = digits[digit];
+
+  } //end of loop()
