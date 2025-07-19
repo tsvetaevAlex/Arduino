@@ -40,7 +40,7 @@
     2
   </td align="left">
   <td>
-    B ...
+    B01110101
   </td>
   </tr>
   <tr>
