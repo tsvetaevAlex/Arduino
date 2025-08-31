@@ -32,7 +32,7 @@
     1
   </td align="left">
   <td>
-    B01110110
+    B10010000
   </td>
   </tr>
   <tr>
@@ -40,7 +40,7 @@
     2
   </td align="left">
   <td>
-    B01110101
+    B ...
   </td>
   </tr>
   <tr>

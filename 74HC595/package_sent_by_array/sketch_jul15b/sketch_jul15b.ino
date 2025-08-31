@@ -5,13 +5,14 @@
 int latchPin = 12;  // RCLK пин защелка
 int dataPin  = 14;  // SER пин данных
 int syncPin = 11; // SRCLK синхронизирующий пин clockPin
-int pause = 1000;
+int pause = 1500;
 byte leds;
 byte testLed = B10000000;
 byte allLed =  B11111111;
 const byte zeroleds = B00000000;
 //byte digit1 = B10000001;
-byte digit1 =B10010000; //use MSBFIRST
+byte digit1 = B10010000; //use MSBFIRST
+byte digit2 = B11110110; //use MSBFIRST
 /*
 void resetShiftRegister() {
   //digitalWrite(resetPin, LOW);   // активируем сброс
@@ -47,6 +48,7 @@ void loop() {
   delay(pause);
 
   digitalWrite(latchPin, LOW);
-  shiftOut(dataPin, syncPin, MSBFIRST, B00000000); // выключить всё
+  shiftOut(dataPin, syncPin, MSBFIRST, zeroleds); // выключить всё
   digitalWrite(latchPin, HIGH);
-}
+  delay(10);
+ }
