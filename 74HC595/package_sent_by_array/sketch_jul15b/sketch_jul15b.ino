@@ -7,7 +7,7 @@ byte leds;
 void setup() {
   pinMode(latchPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
-  pinMode(dataPin, OUTPUT);
+  pinMode(dataPin, OUTPUT);f:\workspace\src\Arduino\IRFZ44N\UNO\BA56-12GWA smaler (3 digits)\UNO_Mosfet_3_digits_GND_Source_3_Digits_indicatorr\UNO_Mosfet_3_digits_GND_Source_3_Digits_indicatorr.tino
 
   leds = B11111111; // Все включить
   digitalWrite(latchPin, LOW);
