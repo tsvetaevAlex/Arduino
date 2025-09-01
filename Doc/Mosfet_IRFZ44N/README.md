@@ -8,7 +8,7 @@
 | Term   | Description |
 |--------|-------------|
 | МК     | микроконтроллер / microcontroller (Arduino) |
-| IRFZ44N   | Полевой транзистор N-типа (MOSFET)<br><img src="img/Mosfet_IRFZ44N.png" alt="внешний вид MOSFET IRFZ44N"> |
+| IRFZ44N  | Полевой транзистор N-типа (MOSFET)<br> <img src="..\img\Mosfet_IRFZ44N.png" alt="внешний вид N-MOSFET IRFZ44N"> |
 | Breadboard | беспаечная макетная плата |
 
 
