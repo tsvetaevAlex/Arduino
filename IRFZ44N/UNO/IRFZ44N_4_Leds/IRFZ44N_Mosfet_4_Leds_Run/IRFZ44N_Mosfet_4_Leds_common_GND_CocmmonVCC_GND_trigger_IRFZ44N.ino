@@ -11,7 +11,6 @@ int pause = 50;
 
 
 void setup()  {
-  // устанваливаем пин 9 в режим выхода
   pinMode(Gate1, OUTPUT);
   pinMode(Gate2, OUTPUT);
   pinMode(Gate3, OUTPUT);
